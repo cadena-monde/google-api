@@ -46,7 +46,7 @@ func TestObterListaArquivos_2Arquivos_NomeECaminhoRetornado(t *testing.T) {
 	for _, item := range lista {
 		caminho, ok := arquivos[item.Arquivo]
 		if !ok {
-			t.Errorf("Arquivo não retornado na lista: %v lista: %v", item.Arquivo, lista)
+			t.Errorf("Arquivo não retornado: %v arquivos: %v", item.Arquivo, arquivos)
 		} else if caminho != item.Caminho {
 			t.Errorf("Caminho inválido. Esperado %v retornado %v", item.Caminho, caminho)
 		}
