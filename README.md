@@ -4,20 +4,13 @@
 
 ## Upload de arquivos para o Google Drive
 
-Permite fazer upload de múltiplos arquivos para uma pasta, criando a pasta e enviando todos os arquivos especificados nos parâmetros.
+Permite fazer upload de múltiplos arquivos criando a estrutura de pastas e enviando todos os arquivos especificados nos parâmetros.
 
 ### Exemplo de uso:
 
-    Google_API.exe upload 13.2.2.300 C:\build\MondeCliente.exe "C:\Pasta com espaço\MondeServidor.exe"
+    google-api.exe upload Pasta\Subpasta C:\Arquivo1.exe "C:\Pasta com espaço\Arquivo2.exe"
 
-O comando acima irá fazer upload dos arquivos MondeCliente.exe e MondeServidor.exe para uma pasta 13.2.2.300 no Google Drive.
-
-### Limitações e recursos a serem implementados
-
-- O ID da pasta "parent" onde as pastas são criadas para fazer o upload está hardcoded, precisa ser configurável ou o ideal é receber nos parametros: upload Pasta1\subpasta e o aplicativo criar a estrutura no drive caso não exista
-- Ao enviar o arquivo, caso a pasta já exista, o aplicativo irá criar uma pasta com o mesmo nome (o Google Drive permite isso), o ideal era detectar e fazer upload para a mesma pasta.
-
-# Desenvolvimento
+O comando acima irá fazer upload dos arquivos Arquivo1.exe e Arquivo2.exe para uma Pasta\Subpasta, mantendo a estrutura de diretórios no Google Drive.
 
 ## Dependências
 
