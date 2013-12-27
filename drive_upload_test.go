@@ -33,19 +33,22 @@ func TestObterListaArquivos_2Arquivos_2ItensRetornado(t *testing.T) {
 func TestObterListaArquivos_2Arquivos_NomeECaminhoRetornado(t *testing.T) {
 	setup()
 
-	var arquivos = obterListaArquivos(args)
-
-	caminho, ok := arquivos[Arquivo1]
-	if !ok {
-		t.Errorf("Arquivo %v não retornado na lista", Arquivo1)
-	} else if caminho != args[0] {
-		t.Errorf("Caminho inválido. Esperado %v retornado %v", args[0], caminho)
+	var lista = []struct {
+		Arquivo string
+		Caminho string
+	}{
+		{Arquivo1, args[0]},
+		{Arquivo2, args[1]},
 	}
 
-	caminho, ok = arquivos[Arquivo2]
-	if !ok {
-		t.Errorf("Arquivo %v não retornado na lista", Arquivo2)
-	} else if caminho != args[1] {
-		t.Errorf("Caminho inválido. Esperado %v retornado %v", args[1], caminho)
+	var arquivos = obterListaArquivos(args)
+
+	for _, item := range lista {
+		caminho, ok := arquivos[item.Arquivo]
+		if !ok {
+			t.Errorf("Arquivo não retornado na lista: %v lista: %v", item.Arquivo, lista)
+		} else if caminho != item.Caminho {
+			t.Errorf("Caminho inválido. Esperado %v retornado %v", item.Caminho, caminho)
+		}
 	}
 }
