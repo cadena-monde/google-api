@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/cadena-monde/google-api.png?branch=master)](https://travis-ci.org/cadena-monde/google-api)
+
 # Recursos
 
 ## Upload de arquivos para o Google Drive
