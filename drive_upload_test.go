@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 	"testing"
 )
 
@@ -15,8 +16,13 @@ var (
 )
 
 func setup() {
-	args[0] = fmt.Sprintf("c:\\temp\\%v", Arquivo1)
-	args[1] = fmt.Sprintf("C:\\temp\\Nova Pasta\\%v", Arquivo2)
+	if runtime.GOOS == "windows" {
+		args[0] = fmt.Sprintf("c:\\temp\\%v", Arquivo1)
+		args[1] = fmt.Sprintf("C:\\temp\\Nova Pasta\\%v", Arquivo2)
+	} else {
+		args[0] = fmt.Sprintf("/temp/%v", Arquivo1)
+		args[1] = fmt.Sprintf("/temp/Nova Pasta/%v", Arquivo2)
+	}
 }
 
 func TestObterListaArquivos_2Arquivos_2ItensRetornado(t *testing.T) {
