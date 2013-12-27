@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"path"
 	"runtime"
 	"testing"
 )
@@ -56,5 +57,25 @@ func TestObterListaArquivos_2Arquivos_NomeECaminhoRetornado(t *testing.T) {
 		} else if caminho != item.Caminho {
 			t.Errorf("Caminho inválido. Esperado %v retornado %v", item.Caminho, caminho)
 		}
+	}
+}
+
+func TestObterPastas_2PastasSeparadasPorBarraInvertida_PastasRetornadas(t *testing.T) {
+	retorno := obterPastas(path.Join("Monde\\13.1.2.3"))
+	verificarRetornoObterPastas(t, retorno)
+}
+
+func TestObterPastas_2PastasSeparadasPorBarra_PastasRetornadas(t *testing.T) {
+	retorno := obterPastas("Monde/13.1.2.3")
+	verificarRetornoObterPastas(t, retorno)
+}
+
+func verificarRetornoObterPastas(t *testing.T, retorno []string) {
+	if len(retorno) != 2 {
+		t.Error("Deveria retornar 2 pastas")
+	} else if retorno[0] != "Monde" {
+		t.Errorf("Esperado Monde retornado %v")
+	} else if retorno[1] != "13.1.2.3" {
+		t.Errorf("Esperado 13.1.2.3 retornado %v")
 	}
 }
