@@ -25,6 +25,7 @@ func baixar_arquivo_mais_recente(client *http.Client, argv []string) {
 	lista, err := service.Files.List().Q(query).Do()
 	if err != nil {
 		fmt.Println(err.Error())
+		return
 	}
 
 	var itemMaisNovo = lista.Items[0]
