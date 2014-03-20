@@ -9,12 +9,12 @@ import (
 )
 
 func init() {
-	registrarServico("download", drive.DriveScope, download)
+	registrarServico("baixar_arquivo_mais_recente", drive.DriveScope, baixar_arquivo_mais_recente)
 }
 
-func download(client *http.Client, argv []string) {
+func baixar_arquivo_mais_recente(client *http.Client, argv []string) {
 	if len(argv) < 2 {
-		fmt.Println(os.Stderr, "Uso: download [arquivo.extensao] [Destino\\NomeArquivo.extensao] ...")
+		fmt.Println(os.Stderr, "Uso: baixar_arquivo_mais_recente [arquivo.extensao] [Destino\\NomeArquivo.extensao] ...")
 		return
 	}
 
