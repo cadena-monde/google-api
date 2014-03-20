@@ -13,6 +13,10 @@ func init() {
 }
 
 func download(client *http.Client, argv []string) {
+	if len(argv) < 2 {
+		fmt.Println(os.Stderr, "Uso: download [arquivo.extensao] [Destino\\NomeArquivo.extensao] ...")
+		return
+	}
 
 	service, _ := drive.New(client)
 
