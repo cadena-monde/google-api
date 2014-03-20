@@ -12,6 +12,16 @@ Permite fazer upload de múltiplos arquivos criando a estrutura de pastas e envi
 
 O comando acima irá fazer upload dos arquivos Arquivo1.exe e Arquivo2.exe para uma Pasta\Subpasta, mantendo a estrutura de diretórios no Google Drive.
 
+## Download de determinado arquivo mais recente
+
+Permite fazer o download de um determinado arquivo no Google Drive com a versão mais recente desse arquivo.
+
+### Exemplo de uso:
+
+    google-api.exe baixar_arquivo_mais_recente Arquivo.7z C:\Download\Arquivo.7z
+
+O comando acima irá fazer o download do Arquivo.7z mais recente dentro do Google Drive para a pasta local C:\Download com o nome de Arquivo.7z.
+
 ## Dependências
 
 ### google-api-go-client
@@ -32,7 +42,8 @@ O comando acima irá fazer upload dos arquivos Arquivo1.exe e Arquivo2.exe para 
 
 #### Gerar ClientId e ClientSecret
 
-Para fazer a autenticação é necessário gerar um ClientId e um ClientSecret no console da API: [https://code.google.com/apis/console/ ](https://code.google.com/apis/console/)
+Para fazer a autenticação é necessário gerar um ClientId e um ClientSecret no console da API: [https://code.google.com/apis/console/ ](https://code.google.com/apis/console/).
+Lembrando que, ao gerar a autenticação, é necessário escolher a opção "Installed application", pois somente dessa forma o Client Secret será gerado também.
 
 #### Criar arquivos de configuração
 
