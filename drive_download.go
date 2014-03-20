@@ -34,17 +34,24 @@ func download(client *http.Client, argv []string) {
 		}
 	}
 
-	requisicaoArquivo, err := http.Get(itemMaisNovo.DownloadUrl)
+	BaixarArquivo(itemMaisNovo, argv[1])
+}
+
+func BaixarArquivo(item *drive.File, destino string) (string, error) {
+	requisicaoArquivo, err := http.Get(item.DownloadUrl)
 	if err != nil {
 		fmt.Printf("Erro ao fazer a requisição: %v\n", err)
+		return "", nil
 	}
 	respostaAquisicao, err := OAuthClient(Config).Transport.RoundTrip(requisicaoArquivo.Request)
 	defer respostaAquisicao.Body.Close()
 	if err != nil {
 		fmt.Printf("Erro ao fazer o download: %v\n", err)
+		return "", nil
 	}
 
-	arquivoLocal, err := os.Create(argv[1])
+	arquivoLocal, err := os.Create(destino)
 	defer arquivoLocal.Close()
 	io.Copy(arquivoLocal, respostaAquisicao.Body)
+	return "", nil
 }
