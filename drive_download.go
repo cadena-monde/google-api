@@ -32,12 +32,12 @@ func download(client *http.Client, argv []string) {
 
 	requisicaoArquivo, err := http.NewRequest("GET", itemMaisNovo.DownloadUrl, nil)
 	if err != nil {
-		fmt.Printf("An error occurred: %v\n", err)
+		fmt.Printf("Erro ao fazer a requisição: %v\n", err)
 	}
 	respostaAquisicao, err := OAuthClient(Config).Transport.RoundTrip(requisicaoArquivo)
 	defer resp.Body.Close()
 	if err != nil {
-		fmt.Printf("An error occurred: %v\n", err)
+		fmt.Printf("Erro ao fazer o download: %v\n", err)
 	}
 
 	arquivoLocal, err := os.Create(argv[1])
