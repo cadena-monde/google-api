@@ -30,17 +30,17 @@ func download(client *http.Client, argv []string) {
 		}
 	}
 
-	req, err := http.NewRequest("GET", itemMaisNovo.DownloadUrl, nil)
+	requisicaoArquivo, err := http.NewRequest("GET", itemMaisNovo.DownloadUrl, nil)
 	if err != nil {
 		fmt.Printf("An error occurred: %v\n", err)
 	}
-	resp, err := OAuthClient(Config).Transport.RoundTrip(req)
+	respostaAquisicao, err := OAuthClient(Config).Transport.RoundTrip(requisicaoArquivo)
 	defer resp.Body.Close()
 	if err != nil {
 		fmt.Printf("An error occurred: %v\n", err)
 	}
 
-	f, err := os.Create(argv[1])
-	defer f.Close()
-	io.Copy(f, resp.Body)
+	arquivoLocal, err := os.Create(argv[1])
+	defer arquivoLocal.Close()
+	io.Copy(arquivoLocal, respostaAquisicao.Body)
 }
